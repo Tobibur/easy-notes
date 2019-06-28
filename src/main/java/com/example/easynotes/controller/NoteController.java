@@ -21,18 +21,21 @@ public class NoteController {
     }
 
     // Get All Notes
+    @CrossOrigin
     @GetMapping("/notes")
     public List<Note> getAllNotes() {
         return noteRepository.findAll();
     }
 
     // Create a new Note
+    @CrossOrigin
     @PostMapping("/notes")
     public Note createNote(@Valid @RequestBody Note note) {
         return noteRepository.save(note);
     }
 
     // Get a Single Note
+    @CrossOrigin
     @GetMapping("/notes/{id}")
     public Note getNoteById(@PathVariable(value = "id") Long noteId) {
         return noteRepository.findById(noteId)
@@ -40,6 +43,7 @@ public class NoteController {
     }
 
     // Update a Note
+    @CrossOrigin
     @PutMapping("/notes/{id}")
     public Note updateNote(@PathVariable(value = "id") Long noteId,
                            @Valid @RequestBody Note noteDetails) {
@@ -54,6 +58,7 @@ public class NoteController {
     }
 
     // Delete a Note
+    @CrossOrigin
     @DeleteMapping("/notes/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
         Note note = noteRepository.findById(noteId)
